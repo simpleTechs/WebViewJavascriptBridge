@@ -91,7 +91,7 @@
 
 - (void)WKFlushMessageQueue {
     [_webView evaluateJavaScript:[_base webViewJavascriptFetchQueyCommand] completionHandler:^(NSString* result, NSError* error) {
-        [_base flushMessageQueue:result];
+        [self->_base flushMessageQueue:result];
     }];
 }
 
@@ -103,7 +103,7 @@
     
     if (_base.numRequestsLoading == 0) {
         [webView evaluateJavaScript:[_base webViewJavascriptCheckCommand] completionHandler:^(NSString *result, NSError *error) {
-            [_base injectJavascriptFile:![result boolValue]];
+            [self->_base injectJavascriptFile:![result boolValue]];
         }];
     }
     
